@@ -176,14 +176,5 @@ animation.prototype = {
 }
 new draw(centerX,centerY,centerZ,ball_r,dot_r,balls);
 var A = new animation(ctx,c.width,c.height,centerX,centerY,centerZ,balls,dot_r);
-$(window).on("click",function(){
-	if(A.animateFlag){
-		A.stop();
-		A.animateFlag=0;
-	}else{
-		A.init();
-		A.animateFlag=1;
-	}
-});
 </script>
 </html>
