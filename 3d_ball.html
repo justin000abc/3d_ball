@@ -51,13 +51,13 @@ function draw(centerX,centerY,centerZ,ball_r,dot_r,balls){
 }
 draw.prototype = {
 	init: function() {
-		//前半球
+		//從Z軸看，由270度開始為前半球第一層
 		var l = 270;
 		for (var j=3;j>=0;j--){
 			this.position(l);
 			l += this.interval;
 		}
-		//後半球
+		//從Z軸看，由於90度跟270度為重複，所以+30從120開始為後半球第一層
 		var l = 120;
 		for (var j=2;j>=0;j--){
 			this.position(l);
