@@ -139,8 +139,13 @@ animation.prototype = {
 		var cos = Math.cos(angleY);
         var sin = Math.sin(angleY);
         for(var i=0;i<this.balls.length;i++){
-            var y1 = (this.balls[i].z-this.centerZ) * sin + (this.balls[i].y-this.centerY) * cos + this.centerY;
-            var z1 = (this.balls[i].z-this.centerZ) * cos - (this.balls[i].y-this.centerY) * sin + this.centerZ;
+        	/*
+        	從b夾角轉到c夾角：y1 = y*sin(b+c) => y*cos*b + z*sin*c
+        	z1 = z*cos(b+c) => z*cos*b - y*sin*c
+        	cos*b為cos0 = 1
+        	*/
+            var y1 = (this.balls[i].z-this.centerZ) * sin + (this.balls[i].y-this.centerY) + this.centerY;
+            var z1 = (this.balls[i].z-this.centerZ) - (this.balls[i].y-this.centerY) * sin + this.centerZ;
             this.balls[i].y = y1;
             this.balls[i].z = z1;
         }
@@ -150,8 +155,8 @@ animation.prototype = {
 		var cos = Math.cos(angleY);
         var sin = Math.sin(angleY);
 		for(var i=0;i<this.balls.length;i++){
-		    var x1 = (this.balls[i].x-this.centerX) * cos - (this.balls[i].z-this.centerZ) * sin + this.centerX;
-		    var z1 = (this.balls[i].x-this.centerX) * sin + (this.balls[i].z-this.centerZ) * cos + this.centerZ;
+		    var x1 = (this.balls[i].x-this.centerX) - (this.balls[i].z-this.centerZ) * sin + this.centerX;
+		    var z1 = (this.balls[i].x-this.centerX) * sin + (this.balls[i].z-this.centerZ) + this.centerZ;
 		    this.balls[i].x = x1;
 		    this.balls[i].z = z1;
 		}
@@ -161,8 +166,8 @@ animation.prototype = {
 		var cos = Math.cos(angleY);
         var sin = Math.sin(angleY);
 		for(var i=0;i<this.balls.length;i++){
-            var x1 = (this.balls[i].x-this.centerX) * cos - (this.balls[i].y-this.centerY) * sin + this.centerX;
-            var y1 = (this.balls[i].x-this.centerX) * sin + (this.balls[i].y-this.centerY) * cos + this.centerY;
+            var x1 = (this.balls[i].x-this.centerX) - (this.balls[i].y-this.centerY) * sin + this.centerX;
+            var y1 = (this.balls[i].x-this.centerX) * sin + (this.balls[i].y-this.centerY) + this.centerY;
             this.balls[i].x = x1;
             this.balls[i].y = y1;
         }
